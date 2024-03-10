@@ -2,10 +2,7 @@
 A python script to update the the IP address at OVH DynHost
 
 ## Dependecies
-This project needs the [ipgetter](https://github.com/phoemur/ipgetter) and [requests](http://requests.readthedocs.org/en/latest/) libraries.
+needs [requests](http://requests.readthedocs.org/en/latest/) libraries.
 
-Install with `pip`
+Install with `pip install -r requirements.txt` 
 
-```
-sudo pip install ipgetter requests
-```

@@ -1,20 +1,23 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python
 """
 A simple script to update the OVH DynHost entry with the current external IP of this machine.
 """
 
 import argparse
-import ipgetter
 import requests
 import socket
 import sys
 
+def myip():
+    return requests.get('https://httpbin.org/ip').json()["origin"]
+
 def main():
+    default_ip = myip()
     parser = argparse.ArgumentParser(prog='ovh_dynhost', description='Updates the OVH DynHost entry to the current IP address.')
     parser.add_argument('domain', help='The FQDN to be updated.')
     parser.add_argument('user', help='The user id that has access to update the FQDN.')
     parser.add_argument('password', help='The password for the user id.')
-    parser.add_argument('-ip', help='Update to this ip address instead of the current external address.', default=ipgetter.myip(), metavar='x.x.x.x')
+    parser.add_argument('-ip', help=f'Update to this ip address instead of the current external address (default {default_ip}).', default=default_ip, metavar='x.x.x.x')
     args = parser.parse_args()
 
     domain = args.domain
