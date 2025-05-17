@@ -35,7 +35,7 @@ def main():
     if not check_dns(domain, ip):
         update_dns(domain, ip, user, password)
     else:
-        print("Not change detected. Not updating")
+        print("No change detected. Not updating")
 
 
 def check_dns(domain, ip):
@@ -72,3 +72,4 @@ def update_dns(domain, ip, user, password):
 
 if __name__ == '__main__':
     main()
+
