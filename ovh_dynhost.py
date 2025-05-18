@@ -57,12 +57,12 @@ def update_dns(domain, ip, user, password):
         print("IP did not change")
         return
 
-    if response.status_code == requests.codes.get(401):
+    if response.status_code == 401:
         # 401 Authentification failed
         sys.stderr.write("Authentification failed. User or password is wrong.\n")
         sys.exit(-2)
 
-    if response.status_code == requests.codes.get(403):
+    if response.status_code == 403:
         # 403 Forbidden
         sys.stderr.write("Authentification is missing.\n")
         sys.exit(-3)
